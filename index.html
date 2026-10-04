@@ -120,7 +120,14 @@ header{animation:headerIn .8s ease both}
 
 <section class="contact" id="contact"><div class="contact-inner"><div class="title"><div class="small">GET IN TOUCH</div><h2>Let's Create Something<br><span class="goldtxt">Memorable.</span></h2></div><p class="contact-lead">Apna moment, event ya idea share karo. Requirement bhejo — hum shoot, reels aur editing ko ek clean cinematic feel dene ki koshish karenge.</p><div class="contact-grid"><div class="contact-card"><div class="contact-icon">📞</div><span>Call / WhatsApp</span><a href="tel:7014136083">+91 70141 36083</a></div><div class="contact-card"><div class="contact-icon">✉️</div><span>Email</span><a href="mailto:himanshuvaishnav787@gmail.com">himanshuvaishnav787@gmail.com</a></div><div class="contact-card"><div class="contact-icon">📍</div><span>Available In</span><a href="#home">Rajasthan • Ahmedabad • All India</a></div></div><p class="contact-note">Date • Location • Service • Budget — ye 4 details WhatsApp par bhej do.</p><div class="contact-actions"><a class="btn gold" href="https://wa.me/917014136083?text=Hi%20SIROHI%20CLICK%2C%20mujhe%20booking%20karni%20hai.%0AService%3A%20%0ADate%3A%20%0ALocation%3A%20%0ABudget%3A%20" target="_blank">BOOK ON WHATSAPP</a><a class="btn outline" href="tel:7014136083">CALL NOW</a><a class="btn outline" href="mailto:himanshuvaishnav787@gmail.com">EMAIL US</a></div></div></section>
 <section class="admin" id="admin"><button type="button" class="admin-toggle" onclick="document.getElementById('adminBox').classList.toggle('open')">ADMIN</button><div id="adminBox" class="admin-collapsed"><div class="title"><div class="small">PRIVATE ADMIN</div><h2>Manage Your Work</h2><p>Login karke photo/video permanently online upload karo.</p></div><div class="admin-box">
-<div id="loginBox"><h3>🔐 Admin Login</h3><input class="input" id="email" type="email" placeholder="Admin email"><input class="input" id="password" type="password" placeholder="Password"><button type="button" class="btn gold" id="loginBtn">Login</button><div id="loginStatus" class="status"></div><div class="login-note">Admin account Supabase Dashboard → Authentication → Users me create karna hoga.</div></div>
+<div id="loginBox"><h3>🔐 Admin Login</h3><input class="input" id="email" type="email" placeholder="Admin email"><input class="input" id="password" type="password" placeholder="Password"><button type="button" class="btn gold" id="loginBtn">Login</button><button type="button" class="btn outline" id="forgotBtn">Forgot Password?</button><div id="loginStatus" class="status"></div><div class="login-note">Password bhool gaye? Forgot Password se secure recovery email mangwa sakte ho.</div></div>
+<div id="resetBox" class="hidden" style="margin-top:18px;padding:18px;border:1px solid rgba(214,173,104,.2);background:#090909">
+<h3>🔑 Set New Password</h3>
+<input class="input" id="newPassword" type="password" placeholder="New password">
+<input class="input" id="confirmPassword" type="password" placeholder="Confirm new password">
+<button type="button" class="btn gold" id="resetBtn">Update Password</button>
+<div id="resetStatus" class="status"></div>
+</div>
 <div id="panel" class="hidden"><h3>☁️ Cloud Upload</h3><div class="row"><label class="upload-label">+ Add Photos<input id="photoInput" type="file" accept="image/*" multiple class="hidden"></label><label class="upload-label">+ Add Videos<input id="videoInput" type="file" accept="video/*" multiple class="hidden"></label><button class="btn outline" id="logoutBtn">Logout</button></div><div id="uploadStatus" class="status"></div><p style="color:#777">Uploaded files cloud me save hongi aur visitors ko gallery me dikhegi.</p></div>
 </div></div></section>
 <footer>© 2026 SIROHI CLICK — हर पल रो किस्सो, म्हारी नज़र सूं।</footer>
@@ -214,6 +221,49 @@ async function deleteMedia(item){
   await loadMedia();
 }
 
+const resetBox=$("resetBox"),resetBtn=$("resetBtn"),forgotBtn=$("forgotBtn");
+$("forgotBtn").onclick=async()=>{
+  const email=$("email").value.trim();
+  if(!email){setStatus($("loginStatus"),"Pehle admin email bharo.");return}
+  forgotBtn.disabled=true;
+  setStatus($("loginStatus"),"Recovery email bhej rahe hain…");
+  try{
+    const {error}=await supabase.auth.resetPasswordForEmail(email,{
+      redirectTo:location.origin+location.pathname+"?admin=1"
+    });
+    if(error){
+      setStatus($("loginStatus"),"Recovery failed: "+error.message);
+    }else{
+      setStatus($("loginStatus"),"Recovery email bhej diya ✓ Inbox/spam check karo. Latest email ka link use karo.");
+    }
+  }catch(e){
+    setStatus($("loginStatus"),"Recovery error: "+(e?.message||"Unknown error"));
+  }finally{forgotBtn.disabled=false}
+};
+
+$("resetBtn").onclick=async()=>{
+  const p=$("newPassword").value,cp=$("confirmPassword").value;
+  if(!p||!cp){setStatus($("resetStatus"),"Dono password fields bharo.");return}
+  if(p.length<8){setStatus($("resetStatus"),"Password kam se kam 8 characters ka rakho.");return}
+  if(p!==cp){setStatus($("resetStatus"),"Dono passwords match nahi kar rahe.");return}
+  resetBtn.disabled=true;
+  setStatus($("resetStatus"),"Password update ho raha hai…");
+  try{
+    const {error}=await supabase.auth.updateUser({password:p});
+    if(error){setStatus($("resetStatus"),"Password update failed: "+error.message);return}
+    setStatus($("resetStatus"),"Password updated ✓ Ab naye password se login kar sakte ho.");
+    $("newPassword").value="";$("confirmPassword").value="";
+    setTimeout(async()=>{
+      await supabase.auth.signOut();
+      resetBox.classList.add("hidden");
+      loginBox.classList.remove("hidden");
+      setStatus($("loginStatus"),"Password update ho gaya. Ab login karo.");
+    },700);
+  }catch(e){
+    setStatus($("resetStatus"),"Reset error: "+(e?.message||"Unknown error"));
+  }finally{resetBtn.disabled=false}
+};
+
 $("loginBtn").onclick=async()=>{
   const email=$("email").value.trim(),password=$("password").value;
   if(!email||!password){setStatus($("loginStatus"),"Email aur password bharo.");return}
@@ -251,8 +301,17 @@ $("photoInput").onchange=e=>uploadFiles([...e.target.files]);
 $("videoInput").onchange=e=>uploadFiles([...e.target.files]);
 
 supabase.auth.onAuthStateChange((_event,session)=>{
+  const recovery=_event==="PASSWORD_RECOVERY";
+  if(recovery){
+    resetBox.classList.remove("hidden");
+    loginBox.classList.add("hidden");
+    panel.classList.add("hidden");
+    setStatus($("resetStatus"),"Recovery link valid hai. Naya password set karo.");
+    return;
+  }
   loginBox.classList.toggle("hidden",!!session);
   panel.classList.toggle("hidden",!session);
+  if(!session)resetBox.classList.add("hidden");
   loadMedia();
 });
 loadMedia();
