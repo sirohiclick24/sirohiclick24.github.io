@@ -217,12 +217,32 @@ async function deleteMedia(item){
 $("loginBtn").onclick=async()=>{
   const email=$("email").value.trim(),password=$("password").value;
   if(!email||!password){setStatus($("loginStatus"),"Email aur password bharo.");return}
+  const btn=$("loginBtn");
+  btn.disabled=true;
   setStatus($("loginStatus"),"Login ho raha hai…");
   try {
-    const {error}=await supabase.auth.signInWithPassword({email,password});
-    setStatus($("loginStatus"),error?error.message:"Login successful ✓");
+    const {data,error}=await supabase.auth.signInWithPassword({email,password});
+    if(error){
+      setStatus($("loginStatus"),"Login failed: "+error.message);
+      return;
+    }
+    const {data:sessionData,error:sessionError}=await supabase.auth.getSession();
+    if(sessionError){
+      setStatus($("loginStatus"),"Session error: "+sessionError.message);
+      return;
+    }
+    if(sessionData.session){
+      loginBox.classList.add("hidden");
+      panel.classList.remove("hidden");
+      setStatus($("loginStatus"),"Login successful ✓");
+      await loadMedia();
+    }else{
+      setStatus($("loginStatus"),"Login hua, lekin session nahi bana. Page refresh karke dobara try karo.");
+    }
   } catch(e) {
     setStatus($("loginStatus"),"Login error: "+(e?.message||"Unknown error"));
+  } finally {
+    btn.disabled=false;
   }
 };
 
