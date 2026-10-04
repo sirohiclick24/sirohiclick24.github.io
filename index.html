@@ -1,1 +1,290 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Vaishnav Click × Sirohi Click — Rajasthan photography, reels, editing and iPhone shoots.">
+<meta name="keywords" content="Sirohi Click, Vaishnav Click, Sirohi photographer, Rajasthan photographer, Jaipur photographer, Jodhpur photographer, Pali photographer, Ahmedabad photographer, wedding photography Rajasthan, pre wedding photography, cinematic reels, iPhone shoot, photo editing, video editing">
+<meta name="author" content="SIROHI CLICK — Himanshu Vaishnav">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="SIROHI CLICK | Rajasthan Creator">
+<meta property="og:description" content="Rajasthan cinematic photography, reels, editing & iPhone shoots — Sirohi, Jaipur, Jodhpur, Pali, Ahmedabad & All India.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sirohiclick24.github.io/">
+<meta name="theme-color" content="#050505">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"SIROHI CLICK","description":"Rajasthan photography, cinematic reels, editing and iPhone shoots.","telephone":"+91-7014136083","email":"himanshuvaishnav787@gmail.com","areaServed":["Sirohi","Jaipur","Jodhpur","Pali","Ahmedabad","India"],"sameAs":["https://www.instagram.com/sirohiclick/","https://www.instagram.com/vaishnavclick/"]}</script>
+<title>SIROHI CLICK | Rajasthan Creator</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#050505;--panel:#0d0d0d;--gold:#d6ad68;--gold2:#f1d39a;--muted:#a5a09a;--line:rgba(214,173,104,.2)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:#fff;font-family:Inter,Arial,sans-serif;line-height:1.6}
+header{position:fixed;top:0;left:0;width:100%;z-index:20;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;background:rgba(5,5,5,.55);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08)}
+.logo{font-weight:800;letter-spacing:3px;font-size:14px}.goldtxt{color:var(--gold)}
+nav a{color:#ddd;text-decoration:none;margin-left:24px;font-size:12px;letter-spacing:1px;text-transform:uppercase;transition:.25s}nav a:hover{color:var(--gold)}
+.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:120px 6% 70px;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(0,0,0,.2),#050505 92%),linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.2)),url("https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=2200&q=90") center/cover}
+.hero:after{content:"";position:absolute;inset:12% 8%;border:1px solid rgba(214,173,104,.22);pointer-events:none}
+.hero>div{position:relative;z-index:2}.small{color:var(--gold);letter-spacing:5px;font-size:10px;margin-bottom:20px;text-transform:uppercase}
+.hero h1{font-family:"Cormorant Garamond",serif;font-size:clamp(58px,10vw,125px);font-weight:600;line-height:.85;letter-spacing:2px;text-shadow:0 8px 40px #000}
+.hero p{color:#ddd;font-size:16px;margin:28px 0 30px;letter-spacing:.5px}
+.btn{display:inline-block;padding:13px 24px;margin:5px;border-radius:2px;text-decoration:none;font-weight:700;border:0;cursor:pointer;letter-spacing:1px;transition:.3s}
+.gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#111}.gold:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(214,173,104,.2)}
+.outline{background:rgba(255,255,255,.03);color:#fff;border:1px solid rgba(255,255,255,.3)}.outline:hover{border-color:var(--gold);color:var(--gold)}
+section{padding:110px 6%}
+.about{background:radial-gradient(circle at 50% 0,rgba(214,173,104,.07),transparent 35%),#080706}
+.title{text-align:center;margin-bottom:50px}.title h2{font-family:"Cormorant Garamond",serif;font-size:clamp(40px,6vw,62px);font-weight:600;line-height:1}
+.title p{color:var(--muted);margin-top:14px}
+.about-box{max-width:850px;margin:auto;text-align:center;color:#bcb7af;font-size:17px;line-height:2}
+.cards{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{padding:40px 20px;background:linear-gradient(145deg,#121212,#090909);border:1px solid rgba(255,255,255,.08);border-radius:3px;text-align:center;transition:.35s;box-shadow:0 15px 50px rgba(0,0,0,.25)}
+.card:hover{transform:translateY(-8px);border-color:var(--line);box-shadow:0 20px 55px rgba(0,0,0,.45)}.card .ico{font-size:30px;margin-bottom:15px;display:inline-block;animation:floatEmoji 3s ease-in-out infinite}.card p{color:#85817b;margin-top:8px;font-size:13px}.service-card{animation:serviceIn .8s ease both;cursor:pointer;position:relative;overflow:hidden}.service-card:nth-child(2){animation-delay:.08s}.service-card:nth-child(3){animation-delay:.16s}.service-card:nth-child(4){animation-delay:.24s}.service-card:nth-child(5){animation-delay:.32s}.service-card:nth-child(6){animation-delay:.40s}.service-card:nth-child(7){animation-delay:.48s}.service-price{margin-top:14px;color:var(--gold2);font-size:21px;font-weight:800}.service-price small{font-size:10px;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:1px}.service-price{opacity:0;max-height:0;transform:translateY(8px);transition:.35s ease}.service-card:after{content:"TAP TO SEE PRICE";display:block;margin-top:12px;color:#666;font-size:9px;letter-spacing:1px}.service-card.active .service-price{opacity:1;max-height:50px;transform:none}.service-card.active:after{content:"PRICE SHOWN"}.service-card.active{border-color:var(--line);box-shadow:0 20px 55px rgba(214,173,104,.12);transform:translateY(-5px)}.price small{font-size:10px;color:#888;font-weight:600}.pricing{margin-top:60px}.pricing-note{color:#888;text-align:center;margin-top:22px;font-size:13px}@keyframes serviceIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}@keyframes floatEmoji{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-5px) rotate(2deg)}}
+.admin{background:#080706}.admin-box{max-width:900px;margin:auto;padding:32px;border:1px solid var(--line);border-radius:4px;background:rgba(17,15,12,.8);box-shadow:0 20px 70px rgba(0,0,0,.3)}
+.admin-box h3{color:var(--gold);margin-bottom:14px}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.input{width:100%;padding:14px 15px;border-radius:2px;border:1px solid #333;background:#080808;color:#fff;margin-bottom:10px;outline:none}.input:focus{border-color:var(--gold)}
+.hidden{display:none!important}.status{color:#aaa;margin:12px 0}.upload-label{display:inline-block;padding:13px 18px;background:var(--gold);color:#111;border-radius:2px;cursor:pointer;font-weight:700;margin:4px}
+.gallery{max-width:1200px;margin:auto;columns:3 250px;column-gap:16px}.item{position:relative;margin-bottom:16px;break-inside:avoid;overflow:hidden;border-radius:3px;background:#111;border:1px solid #222}.item img,.item video{width:100%;display:block;max-height:700px;object-fit:cover;transition:transform .55s ease}.item:hover img,.item:hover video{transform:scale(1.025)}.delete{position:absolute;top:9px;right:9px;background:#000d;color:#fff;border:1px solid #777;border-radius:50%;width:35px;height:35px;cursor:pointer}.empty{text-align:center;color:#777;padding:55px 20px;min-height:180px;display:grid;place-items:center;border:1px solid rgba(214,173,104,.12);background:radial-gradient(circle at center,rgba(214,173,104,.06),transparent 55%);border-radius:3px}
+.instagram{text-align:center;background:linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.94)),url("https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=2000&q=90") center/cover fixed}
+.contact{text-align:center;background:radial-gradient(circle at 50% 0,rgba(214,173,104,.10),transparent 38%),linear-gradient(180deg,#0a0907,#050505);position:relative;overflow:hidden}.contact:before{content:"";position:absolute;inset:24px 6%;border:1px solid rgba(214,173,104,.10);pointer-events:none}.contact-inner{max-width:1050px;margin:auto;position:relative;z-index:1}.contact-kicker{color:var(--gold);font-size:10px;letter-spacing:4px;text-transform:uppercase}.contact-lead{max-width:650px;margin:18px auto 34px!important;color:#bdb8b0!important;line-height:1.8!important}.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:900px;margin:0 auto 30px}.contact-card{padding:24px 18px;background:rgba(255,255,255,.035);border:1px solid rgba(214,173,104,.18);border-radius:3px;transition:.3s}.contact-card:hover{transform:translateY(-5px);border-color:rgba(214,173,104,.5);box-shadow:0 15px 40px rgba(214,173,104,.08)}.contact-card .contact-icon{font-size:22px;margin-bottom:10px}.contact-card span{display:block;color:#777;font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:7px}.contact-card a{color:#eee;text-decoration:none;font-size:14px}.contact-card a:hover{color:var(--gold)}.contact-note{font-size:11px!important;color:#777!important;margin:0 0 20px!important}.contact-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:4px}.contact-actions .btn{min-width:145px}.contact-actions .gold{box-shadow:0 8px 30px rgba(214,173,104,.10)}@media(max-width:700px){.contact-grid{grid-template-columns:1fr}.contact:before{inset:18px 5%}.contact-actions{flex-direction:column;align-items:center}.contact-actions .btn{width:min(330px,100%)}}
+footer{text-align:center;padding:34px;background:#020202;color:#666;border-top:1px solid rgba(255,255,255,.06)}
+.login-note{color:#777;font-size:13px;margin-top:12px}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}.reveal.visible{opacity:1;transform:none}
+.hero>div{animation:heroIn 1.1s ease both}.hero .small{animation:fadeDown 1s ease .1s both}.hero h1{animation:heroTitle 1.1s ease .2s both}.hero p{animation:fadeUp 1s ease .45s both}.hero .btn{animation:fadeUp .8s ease .65s both}
+.title .small{animation:letterIn .8s ease both}
+.about-box{animation:fadeUp .9s ease both}
+.instagram .title{animation:fadeUp .9s ease both}
+.contact .title,.contact>p,.contact>.btn{animation:fadeUp .9s ease both}
+header{animation:headerIn .8s ease both}
+@keyframes heroIn{from{opacity:0}to{opacity:1}}@keyframes fadeDown{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:none}}@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}@keyframes heroTitle{from{opacity:0;transform:scale(.94);letter-spacing:10px}to{opacity:1;transform:scale(1);letter-spacing:2px}}@keyframes letterIn{from{opacity:0;letter-spacing:10px}to{opacity:1;letter-spacing:5px}}@keyframes headerIn{from{opacity:0;transform:translateY(-15px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:800px){nav a{display:none}.cards{grid-template-columns:1fr 1fr}.hero:after{inset:14% 5%}}
+@media(max-width:500px){.cards{grid-template-columns:1fr}section{padding:80px 5%}.hero{min-height:92vh}.hero h1{font-size:60px}}
 
+.about-side{padding:125px 6%;background:radial-gradient(circle at 78% 50%,rgba(214,173,104,.08),transparent 28%),linear-gradient(110deg,#070707,#0b0907);border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(214,173,104,.12)}
+.about-side-wrap{max-width:1180px;margin:auto;display:grid;grid-template-columns:190px 1fr;gap:75px;align-items:center;padding:55px 0}
+.about-label{height:100%;display:flex;flex-direction:column;align-items:flex-start;gap:22px;color:#777;font-size:10px;letter-spacing:3px;writing-mode:vertical-rl;transform:rotate(180deg)}
+.about-label i{display:block;width:1px;height:115px;background:linear-gradient(var(--gold),transparent)}.about-label strong{color:var(--gold);font-size:12px}
+.about-copy{max-width:760px}.about-copy .small{color:var(--gold);letter-spacing:5px;font-size:10px;margin-bottom:18px}.about-copy h2{font-family:"Cormorant Garamond",serif;font-size:clamp(58px,8vw,105px);line-height:.78;font-weight:600;margin-bottom:38px;letter-spacing:-1px}.about-copy .lead{font-size:20px;line-height:1.8;color:#ddd;max-width:720px}.about-copy p:not(.lead){color:#8f8a84;max-width:680px;margin-top:20px;line-height:1.9}.about-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}.about-meta span{font-size:9px;letter-spacing:2px;color:#aaa;border:1px solid rgba(214,173,104,.22);padding:8px 11px}.about-sign{margin-top:38px;color:var(--gold2);font-family:"Cormorant Garamond",serif;font-size:23px}.about-sign small{display:block;color:#666;font:9px Inter,sans-serif;letter-spacing:3px;margin-top:8px}
+@media(max-width:700px){.about-side{padding:85px 6%}.about-side-wrap{grid-template-columns:1fr;gap:25px;padding:25px 0}.about-label{writing-mode:horizontal-tb;transform:none;flex-direction:row;align-items:center;gap:12px}.about-label i{width:55px;height:1px}.about-label strong{margin-left:auto}.about-copy h2{font-size:64px;margin-bottom:28px}.about-copy .lead{font-size:17px}}
+
+.about-simple{max-width:1150px;margin:40px auto 0;display:grid;grid-template-columns:38% 62%;border:1px solid rgba(214,173,104,.2);background:rgba(255,255,255,.025);overflow:hidden}.about-left{padding:55px 45px;border-right:1px solid rgba(214,173,104,.18);position:relative}.about-number{font:90px "Cormorant Garamond",serif;color:rgba(214,173,104,.12);position:absolute;top:5px;right:25px}.about-line{width:55px;height:2px;background:var(--gold);margin-bottom:28px}.about-kicker{color:var(--gold);font-size:10px;letter-spacing:4px;margin-bottom:18px}.about-left h3{font:600 clamp(45px,5vw,70px)/.85 "Cormorant Garamond",serif;margin:0}.about-left h3 span{color:var(--gold)}.about-right{padding:55px}.about-main{font-size:20px!important;color:#ddd!important;line-height:1.8!important}.about-right p{color:#aaa;line-height:1.9}.about-meta{display:flex;flex-wrap:wrap;gap:9px;margin-top:25px}.about-meta span{font-size:9px;letter-spacing:2px;padding:8px 10px;border:1px solid rgba(214,173,104,.22);color:#aaa}.about-sign{margin-top:30px;color:var(--gold);font:23px "Cormorant Garamond",serif}@media(max-width:750px){.about-simple{grid-template-columns:1fr}.about-left{border-right:0;border-bottom:1px solid rgba(214,173,104,.18);padding:40px 28px}.about-right{padding:35px 28px}.about-left h3{font-size:58px}}
+.quick-info{padding:90px 6%;background:#0a0a0a}.quick-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.quick-card{border:1px solid rgba(214,173,104,.18);background:rgba(255,255,255,.025);padding:22px;border-radius:18px}.quick-card h3{margin:0 0 8px;font-family:"Cormorant Garamond",serif;font-size:25px}.quick-card p{color:#aaa;line-height:1.6;margin:0 0 12px;font-size:14px}.quick-card .more-cta{display:inline-block;margin-top:6px}.quick-info .title{margin-bottom:35px}@media(max-width:750px){.quick-grid{grid-template-columns:1fr}.quick-info{padding:65px 6%}} .admin-secret{margin-left:10px;color:#555;font-size:9px;text-decoration:none;opacity:.45}.admin-secret:hover{color:var(--gold);opacity:1}
+ .admin{position:fixed;top:70px;right:14px;z-index:1000;background:transparent;padding:0}.admin-collapsed{display:none}.admin-collapsed.open{display:block;width:330px;max-width:calc(100vw - 28px);margin-top:6px}.admin-toggle{display:block;margin:0 0 0 auto;padding:6px 9px;background:rgba(5,5,5,.72);backdrop-filter:blur(10px);border:1px solid rgba(214,173,104,.25);border-radius:2px;color:#d6ad68;font-size:8px;letter-spacing:2px;cursor:pointer;box-shadow:0 0 12px rgba(214,173,104,.12)}.admin-toggle:hover{color:var(--gold);border-color:var(--gold)}.admin-collapsed .title{margin:0 0 12px}.admin-collapsed .title h2{font-size:28px}.admin-collapsed .title p{font-size:11px}.admin-collapsed .admin-box{padding:18px}.admin-collapsed .admin-box h3{font-size:15px}.admin-collapsed .input{padding:10px;font-size:12px}.admin-collapsed .btn{padding:9px 14px;font-size:10px}.lightbox{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.94);backdrop-filter:blur(14px);display:none;align-items:center;justify-content:center;padding:30px}.lightbox.open{display:flex;animation:fadeUp .3s ease}.lightbox-content{max-width:min(1100px,94vw);max-height:86vh;display:flex;align-items:center;justify-content:center}.lightbox-content img,.lightbox-content video{max-width:100%;max-height:86vh;object-fit:contain;box-shadow:0 25px 90px rgba(0,0,0,.7)}.lightbox-close{position:absolute;top:22px;right:28px;width:42px;height:42px;border:1px solid rgba(214,173,104,.45);background:rgba(5,5,5,.75);color:var(--gold);font-size:24px;cursor:pointer;border-radius:50%}.lightbox-close:hover{border-color:var(--gold);box-shadow:0 0 20px rgba(214,173,104,.16)}.lightbox-caption{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);color:#aaa;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-align:center}.item img,.item video{cursor:zoom-in}.item{position:relative;cursor:zoom-in;overflow:hidden;border:1px solid rgba(214,173,104,.12);background:#080808;box-shadow:0 10px 28px rgba(0,0,0,.22);transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease}.item:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.45));opacity:0;transition:opacity .35s ease;pointer-events:none}.item:hover{transform:translateY(-3px);border-color:rgba(214,173,104,.42);box-shadow:0 18px 42px rgba(0,0,0,.4)}.item:hover:after{opacity:1}.item img,.item video{display:block;width:100%;transition:transform .55s cubic-bezier(.2,.7,.2,1);cursor:zoom-in}.item:hover img,.item:hover video{transform:scale(1.035)}.gallery{column-gap:18px}.item{margin-bottom:18px}.item .media-tag{position:absolute;left:12px;bottom:12px;z-index:3;padding:6px 10px;border:1px solid rgba(214,173,104,.55);background:rgba(5,5,5,.72);backdrop-filter:blur(8px);color:#e8c98f;font-size:8px;letter-spacing:2px;text-transform:uppercase;pointer-events:none}.item .media-tag.reel:before{content:"▶ ";font-size:7px}.item .media-tag.photo:before{content:"✦ ";font-size:7px}.gallery-wrap{position:relative}.gallery-nav{display:flex;justify-content:flex-end;gap:8px;margin:-8px 0 14px}.gallery-nav button{width:34px;height:34px;border:1px solid rgba(214,173,104,.35);background:#090909;color:#d6ad68;border-radius:50%;cursor:pointer;font-size:16px}.gallery-nav button:hover{border-color:#d6ad68;box-shadow:0 0 16px rgba(214,173,104,.15)}.gallery{display:flex!important;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x mandatory;gap:18px;padding:4px 2px 14px;scrollbar-width:none}.gallery::-webkit-scrollbar{display:none}.gallery .item{flex:0 0 calc((100% - 36px)/3);scroll-snap-align:start}@media(max-width:800px){.gallery .item{flex-basis:72%}}</style>
+<style>
+.gallery-filter{display:flex;gap:8px;margin:0 0 14px}
+.gallery-filter button{padding:7px 13px;border:1px solid rgba(214,173,104,.28);background:#090909;color:#8d8d8d;border-radius:2px;font-size:8px;letter-spacing:2px;cursor:pointer;transition:.2s}
+.gallery-filter button:hover,.gallery-filter button.active{color:#d6ad68;border-color:#d6ad68;box-shadow:0 0 14px rgba(214,173,104,.12)}
+.gallery .item.gallery-hidden{display:none}
+</style></head>
+<body><div class="lightbox" id="lightbox" role="dialog" aria-modal="true"><button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close">×</button><div class="lightbox-content" id="lightboxContent"></div><div class="lightbox-caption" id="lightboxCaption"></div></div>
+<header><div class="logo">SIROHI <span class="goldtxt">CLICK</span></div><nav><a href="#home">Home</a><a href="#about">About</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a></nav></header>
+
+<section class="hero" id="home"><div><div class="small">AHMEDABAD • SIROHI • JAIPUR • JODHPUR • PALI • ALL INDIA</div><h1><span class="goldtxt">राम राम</span> सा</h1><p>हर पल रो किस्सो, म्हारी नज़र सूं।<br>Photography • Reels • Editing • iPhone Shoot</p><a class="btn outline" href="https://www.instagram.com/sirohiclick/" target="_blank">INSTAGRAM</a><a class="btn outline" href="#gallery">My Work</a></div></section>
+
+<section class="about" id="about"><div class="title"><div class="small">ABOUT THE CREATOR</div><h2>HIMANSHU VAISHNAV</h2></div><div class="about-simple"><div class="about-left"><div class="about-number">01</div><div class="about-line"></div><div class="about-kicker">MHARO PARICHAY</div><h3>Moments.<br><span>Stories.</span><br>Rajasthan.</h3></div><div class="about-right"><p class="about-main">SIROHI CLICK × VAISHNAV CLICK ek creative identity hai — Rajasthan ke moments ko cinematic feel aur modern style ke saath present karne ki ek koshish.</p><p>Car delivery shoots, weddings, pre-weddings, functions, cinematic reels aur editing — har project mein creativity, clean work aur detail par focus rehta hai.</p><div class="about-meta"><span>SIROHI</span><span>JAIPUR</span><span>JODHPUR</span><span>PALI</span><span>AHMEDABAD</span><span>ALL INDIA</span></div><div class="about-sign">“हर पल रो किस्सो, म्हारी नज़र सूं।”</div></div></div></section>
+
+<section><div class="title"><div class="small">WHAT WE DO</div><h2>Our Services</h2><p>Jis service ki zarurat ho, us par click karke starting price dekho.</p></div><div class="cards">
+<div class="card service-card"><div class="ico">🚗</div><p>New car delivery ke cinematic photos & reels</p><div class="service-price">₹999+ <small>starting</small></div></div>
+<div class="card service-card"><div class="ico">💍</div><h3>Wedding & Pre-Wedding</h3><p>Shaadi aur pre-wedding moments</p><div class="service-price">Custom <small>quote</small></div></div>
+<div class="card service-card"><div class="ico">🎉</div><h3>Function & Event</h3><p>Birthday, engagement & family functions</p><div class="service-price">Custom <small>quote</small></div></div>
+<div class="card service-card"><div class="ico">🎬</div><h3>Reel & Short Video</h3><p>Instagram ke liye cinematic reels</p><div class="service-price">₹799+ <small>starting</small></div></div>
+<div class="card service-card"><div class="ico">📱</div><h3>iPhone Shoot</h3><p>Creative photos & videos</p><div class="service-price">₹599+ <small>starting</small></div></div>
+<div class="card service-card"><div class="ico">✨</div><h3>Photo Editing</h3><p>Photos, reels aur videos ki editing</p><div class="service-price">₹299+ <small>starting</small></div></div>
+<div class="card service-card"><div class="ico">🎥</div><h3>Video Editing</h3><p>Reels aur videos ki editing</p><div class="service-price">₹499+ <small>starting</small></div></div>
+<div class="card service-card"><div class="ico">🎥</div><h3>Custom Shoot</h3><p>Requirement aur budget ke according</p><div class="service-price">Custom <small>quote</small></div></div>
+</div><p class="pricing-note">हर शूट की जरूरत अलग होती है — काम और बजट के हिसाब से पैकेज में बातचीत संभव है।</p></section>
+
+
+
+<section id="gallery"><div class="title"><div class="small">YOUR WORK</div><h2>Photo & Video Stories</h2><p>Latest uploads • Cinematic moments, real stories.</p></div><div class="gallery-filter" id="galleryFilter" role="tablist" aria-label="Gallery filter">
+  <button type="button" class="active" data-filter="all">ALL</button>
+  <button type="button" data-filter="reel">REELS</button>
+  <button type="button" data-filter="photo">PHOTOS</button>
+</div>
+<div class="gallery-nav"><button type="button" id="galleryPrev" aria-label="Previous">‹</button><button type="button" id="galleryNext" aria-label="Next">›</button></div>
+<div class="gallery" id="mediaGallery"><div class="empty"><div style="font-family:Cormorant Garamond,serif;font-size:32px;color:#d6ad68;margin-bottom:8px">SIROHI CLICK</div><div>Stories are loading…</div></div></div></section>
+
+<section id="quick-info" class="quick-info">
+<div class="title"><div class="small">QUICK INFO</div><h2>Everything in One Place</h2></div>
+<div class="quick-grid">
+<div class="quick-card"><h3>Packages</h3><p>Essential ₹599+ • Signature ₹999+ • Custom Quote</p></div>
+<div class="quick-card"><h3>How It Works</h3><p>Enquiry → Plan → Shoot & Edit</p></div>
+<div class="quick-card"><h3>Why SIROHI CLICK</h3><p>Cinematic • Flexible • Clean Edit</p></div>
+<div class="quick-card"><h3>FAQ</h3><p>Booking via WhatsApp • Final price depends on requirement • All India coverage • Custom shoots available</p></div>
+<div class="quick-card"><h3>Instagram</h3><p>Latest work, reels & updates</p><a class="more-cta" href="https://www.instagram.com/vaishnavclick/" target="_blank">VAISHNAV CLICK</a> <a class="more-cta" href="https://www.instagram.com/sirohiclick/" target="_blank">SIROHI CLICK</a></div>
+<div class="quick-card"><h3>Booking</h3><p>Apni requirement WhatsApp par bhejo aur booking start karo.</p><a class="more-cta" href="https://wa.me/917014136083?text=Hi%20SIROHI%20CLICK%2C%20mujhe%20booking%20karni%20hai." target="_blank">START A BOOKING</a></div>
+</div></section>
+
+<section class="instagram"><div class="title"><div class="small">FOLLOW THE JOURNEY</div><h2>Instagram</h2><p>Daily photos & reels ke liye follow karo.</p><a class="btn outline" href="https://www.instagram.com/sirohiclick/" target="_blank">INSTAGRAM</a><a class="btn outline" href="https://www.instagram.com/sirohiclick/" target="_blank">@sirohiclick</a></div></section>
+
+<section class="contact" id="contact"><div class="contact-inner"><div class="title"><div class="small">GET IN TOUCH</div><h2>Let's Create Something<br><span class="goldtxt">Memorable.</span></h2></div><p class="contact-lead">Apna moment, event ya idea share karo. Requirement bhejo — hum shoot, reels aur editing ko ek clean cinematic feel dene ki koshish karenge.</p><div class="contact-grid"><div class="contact-card"><div class="contact-icon">📞</div><span>Call / WhatsApp</span><a href="tel:7014136083">+91 70141 36083</a></div><div class="contact-card"><div class="contact-icon">✉️</div><span>Email</span><a href="mailto:himanshuvaishnav787@gmail.com">himanshuvaishnav787@gmail.com</a></div><div class="contact-card"><div class="contact-icon">📍</div><span>Available In</span><a href="#home">Rajasthan • Ahmedabad • All India</a></div></div><p class="contact-note">Date • Location • Service • Budget — ye 4 details WhatsApp par bhej do.</p><div class="contact-actions"><a class="btn gold" href="https://wa.me/917014136083?text=Hi%20SIROHI%20CLICK%2C%20mujhe%20booking%20karni%20hai.%0AService%3A%20%0ADate%3A%20%0ALocation%3A%20%0ABudget%3A%20" target="_blank">BOOK ON WHATSAPP</a><a class="btn outline" href="tel:7014136083">CALL NOW</a><a class="btn outline" href="mailto:himanshuvaishnav787@gmail.com">EMAIL US</a></div></div></section>
+<section class="admin" id="admin"><button type="button" class="admin-toggle" onclick="document.getElementById('adminBox').classList.toggle('open')">ADMIN</button><div id="adminBox" class="admin-collapsed"><div class="title"><div class="small">PRIVATE ADMIN</div><h2>Manage Your Work</h2><p>Login karke photo/video permanently online upload karo.</p></div><div class="admin-box">
+<div id="loginBox"><h3>🔐 Admin Login</h3><input class="input" id="email" type="email" placeholder="Admin email"><input class="input" id="password" type="password" placeholder="Password"><button type="button" class="btn gold" id="loginBtn">Login</button><div id="loginStatus" class="status"></div><div class="login-note">Admin account Supabase Dashboard → Authentication → Users me create karna hoga.</div></div>
+<div id="panel" class="hidden"><h3>☁️ Cloud Upload</h3><div class="row"><label class="upload-label">+ Add Photos<input id="photoInput" type="file" accept="image/*" multiple class="hidden"></label><label class="upload-label">+ Add Videos<input id="videoInput" type="file" accept="video/*" multiple class="hidden"></label><button class="btn outline" id="logoutBtn">Logout</button></div><div id="uploadStatus" class="status"></div><p style="color:#777">Uploaded files cloud me save hongi aur visitors ko gallery me dikhegi.</p></div>
+</div></div></section>
+<footer>© 2026 SIROHI CLICK — हर पल रो किस्सो, म्हारी नज़र सूं।</footer>
+
+<script>
+if(new URLSearchParams(location.search).get('admin')==='1') document.body.classList.add('admin-mode');
+
+window.addEventListener("error",e=>{
+  const s=document.getElementById("loginStatus");
+  if(s && e.message) s.textContent="Website script error: "+e.message;
+});
+if(!window.supabase || !window.supabase.createClient){
+  const s=document.getElementById("loginStatus");
+  if(s) s.textContent="Login service load nahi hua. Page ko ek baar refresh karo.";
+  throw new Error("Supabase library failed to load");
+}
+const SUPABASE_URL = "https://ixymrekmkcdnzowmpyey.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_sMHkMrv_U7uqcNpnqd9fyw_MEFIsuOa";
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const BUCKET = "media";
+
+const $ = id => document.getElementById(id);
+document.querySelectorAll(".service-card").forEach(card=>card.addEventListener("click",()=>card.classList.toggle("active")));
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add("visible"); revealObserver.unobserve(entry.target); }});
+},{threshold:.12});
+document.querySelectorAll("section:not(.hero) .title, section:not(.hero) .about-box, section:not(.hero) .cards, section:not(.hero) .admin-box, section:not(.hero) .gallery").forEach(el=>{
+  el.classList.add("reveal"); revealObserver.observe(el);
+});
+const loginBox=$("loginBox"), panel=$("panel"), gallery=$("mediaGallery");
+
+function setStatus(el,msg){el.textContent=msg}
+function isVideo(type){return type && type.startsWith("video/")}
+
+
+const lightbox=$("lightbox"),lightboxContent=$("lightboxContent"),lightboxCaption=$("lightboxCaption");
+function openLightbox(url,video,name){lightboxContent.innerHTML="";const el=document.createElement(video?"video":"img");el.src=url;if(video){el.controls=true;el.autoplay=true;el.playsInline=true;el.muted=false}else{el.alt=name||"SIROHI CLICK"}lightboxContent.appendChild(el);lightboxCaption.textContent=name||"SIROHI CLICK • CINEMATIC STORIES";lightbox.classList.add("open");document.body.style.overflow="hidden"}
+function closeLightbox(){lightbox.classList.remove("open");lightboxContent.innerHTML="";document.body.style.overflow=""}
+$("lightboxClose").onclick=closeLightbox;lightbox.addEventListener("click",e=>{if(e.target===lightbox)closeLightbox()});document.addEventListener("keydown",e=>{if(e.key==="Escape")closeLightbox()});
+let mediaLoadInProgress=false;
+
+const galleryPrev=$("galleryPrev"),galleryNext=$("galleryNext");
+function slideGallery(dir){const first=gallery.querySelector(".item");if(first)gallery.scrollBy({left:dir*(first.getBoundingClientRect().width+18),behavior:"smooth"})}
+if(galleryPrev&&galleryNext){galleryPrev.onclick=()=>slideGallery(-1);galleryNext.onclick=()=>slideGallery(1)}
+async function loadMedia(){
+  if(mediaLoadInProgress)return;
+  mediaLoadInProgress=true;
+  try{
+  const {data,error}=await supabase.from("media").select("*").order("created_at",{ascending:false});
+    if(data) data.sort((a,b)=>Number(isVideo(b.type))-Number(isVideo(a.type)) || new Date(b.created_at)-new Date(a.created_at));
+  if(error){gallery.innerHTML='<div class="empty">Gallery setup pending. Admin login/storage setup complete hone ke baad media yahan dikhega.</div>';return}
+  if(!data?.length){gallery.innerHTML='<div class="empty">Abhi koi photo/video upload nahi hai.</div>';return}
+  gallery.innerHTML="";
+  const {data:sessionData}=await supabase.auth.getSession();
+  const loggedIn=!!sessionData.session;
+  data.forEach(item=>{
+    const wrap=document.createElement("div");wrap.className="item";
+    if(isVideo(item.type)){const v=document.createElement("video");v.src=item.url;v.controls=true;v.preload="metadata";v.muted=true;v.playsInline=true;const tag=document.createElement("span");tag.className="media-tag";tag.textContent="REEL";wrap.appendChild(tag);wrap.appendChild(v);v.addEventListener("click",e=>{e.stopPropagation();openLightbox(item.url,true,item.name)})}
+    else{const img=document.createElement("img");img.src=item.url;img.alt=item.name||"SIROHI CLICK";img.loading="lazy";const tag=document.createElement("span");tag.className="media-tag";tag.textContent="PHOTO";wrap.appendChild(tag);wrap.appendChild(img);img.addEventListener("click",()=>openLightbox(item.url,false,item.name))}
+    if(loggedIn){const b=document.createElement("button");b.className="delete";b.textContent="×";b.title="Delete";b.onclick=()=>deleteMedia(item);wrap.appendChild(b)}
+    gallery.appendChild(wrap);
+  });
+  }finally{mediaLoadInProgress=false;}
+}
+
+async function uploadFiles(files){
+  const {data:{session}}=await supabase.auth.getSession();
+  if(!session){setStatus($("uploadStatus"),"Pehle admin login karo.");return}
+  const status=$("uploadStatus");
+  for(const file of files){
+    setStatus(status,"Uploading "+file.name+"…");
+    const safe=file.name.replace(/[^a-zA-Z0-9._-]/g,"-");
+    const path=session.user.id+"/"+Date.now()+"-"+crypto.randomUUID()+"-"+safe;
+    const {error:upErr}=await supabase.storage.from(BUCKET).upload(path,file,{contentType:file.type,upsert:false});
+    if(upErr){setStatus(status,"Upload failed: "+upErr.message);continue}
+    const {data:pub}=supabase.storage.from(BUCKET).getPublicUrl(path);
+    const {error:dbErr}=await supabase.from("media").insert({name:file.name,path,type:file.type,url:pub.publicUrl});
+    if(dbErr){await supabase.storage.from(BUCKET).remove([path]);setStatus(status,"Database error: "+dbErr.message);continue}
+  }
+  setStatus(status,"Upload complete ✓");
+  $("photoInput").value="";$("videoInput").value="";
+  await loadMedia();
+}
+
+async function deleteMedia(item){
+  if(!confirm("Is photo/video ko delete karna hai?"))return;
+  const {error:storageErr}=await supabase.storage.from(BUCKET).remove([item.path]);
+  if(storageErr){alert(storageErr.message);return}
+  const {error:dbErr}=await supabase.from("media").delete().eq("id",item.id);
+  if(dbErr){alert(dbErr.message);return}
+  await loadMedia();
+}
+
+$("loginBtn").onclick=async()=>{
+  const email=$("email").value.trim(),password=$("password").value;
+  if(!email||!password){setStatus($("loginStatus"),"Email aur password bharo.");return}
+  setStatus($("loginStatus"),"Login ho raha hai…");
+  try {
+    const {error}=await supabase.auth.signInWithPassword({email,password});
+    setStatus($("loginStatus"),error?error.message:"Login successful ✓");
+  } catch(e) {
+    setStatus($("loginStatus"),"Login error: "+(e?.message||"Unknown error"));
+  }
+};
+
+$("logoutBtn").onclick=()=>supabase.auth.signOut();
+$("photoInput").onchange=e=>uploadFiles([...e.target.files]);
+$("videoInput").onchange=e=>uploadFiles([...e.target.files]);
+
+supabase.auth.onAuthStateChange((_event,session)=>{
+  loginBox.classList.toggle("hidden",!!session);
+  panel.classList.toggle("hidden",!session);
+  loadMedia();
+});
+loadMedia();
+</script>
+<style id="brand-upgrades">
+.featured-work{padding:100px 6%;background:#090909}.work-grid{max-width:1150px;margin:45px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.work-card{min-height:300px;border:1px solid rgba(214,173,104,.18);background:linear-gradient(145deg,rgba(214,173,104,.09),rgba(255,255,255,.02));padding:28px;display:flex;flex-direction:column;justify-content:flex-end;transition:.35s}.work-card:hover{transform:translateY(-7px);border-color:rgba(214,173,104,.55)}.work-card b{font-family:"Cormorant Garamond",serif;font-size:30px}.work-card span{color:#888;font-size:10px;letter-spacing:2px;margin-top:8px}.review-strip{padding:90px 6%;background:linear-gradient(110deg,#0b0907,#070707)}.reviews{max-width:1050px;margin:40px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.review{padding:28px;border:1px solid rgba(214,173,104,.16);background:rgba(255,255,255,.025);color:#aaa;line-height:1.8}.review strong{display:block;color:#eee;margin-top:18px;font-size:12px}.coverage{padding:80px 6%;text-align:center;border-top:1px solid rgba(214,173,104,.12)}.coverage-tags{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:28px}.coverage-tags span{padding:10px 15px;border:1px solid rgba(214,173,104,.22);font-size:10px;letter-spacing:2px;color:#aaa}.wa-float{position:fixed;right:22px;bottom:22px;z-index:999;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:white;font-size:25px;text-decoration:none;box-shadow:0 8px 30px rgba(0,0,0,.45)}@media(max-width:800px){.work-grid,.reviews{grid-template-columns:1fr}.work-card{min-height:220px}}
+</style>
+
+<section class="review-strip"><div class="title"><div class="small">CLIENT LOVE</div><h2>People. Moments. Memories.</h2></div><div class="reviews"><div class="review">“Clean work, cinematic feel aur bahut achha response.”<strong>— SIROHI CLIENT</strong></div><div class="review">“Shoot simple tha, result ekdum premium laga.”<strong>— JAIPUR CLIENT</strong></div><div class="review">“Editing aur final video dono mast.”<strong>— JODHPUR CLIENT</strong></div></div></section>
+<section class="coverage"><div class="small">WHERE WE WORK</div><h2>Rajasthan & Beyond.</h2><div class="coverage-tags"><span>SIROHI</span><span>JAIPUR</span><span>JODHPUR</span><span>PALI</span><span>AHMEDABAD</span><span>ALL INDIA</span></div></section>
+<a class="wa-float" href="https://wa.me/917014136083?text=Hi%20SIROHI%20CLICK%2C%20mujhe%20shoot%20booking%20ke%20baare%20mein%20baat%20karni%20hai." target="_blank" aria-label="WhatsApp">✆</a><style id="more-sections">
+.more-panel{position:fixed;inset:0;background:rgba(3,3,3,.97);z-index:100;display:none;overflow:auto;padding:100px 6% 50px}.more-panel.open{display:block;animation:fadeUp .35s ease}.more-head{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center}.more-head h2{font:50px "Cormorant Garamond",serif}.more-close{border:1px solid var(--gold);background:none;color:var(--gold);padding:10px 16px;cursor:pointer}.more-grid{max-width:1100px;margin:45px auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.more-option{padding:30px;min-height:170px;border:1px solid rgba(214,173,104,.2);background:linear-gradient(145deg,#111,#080808);cursor:pointer;transition:.3s}.more-option:hover{transform:translateY(-5px);border-color:var(--gold)}.more-option h3{font:32px "Cormorant Garamond",serif;margin:10px 0}.more-option p{color:#888;font-size:13px}.more-slide{display:none;max-width:850px;margin:45px auto;padding:45px;border:1px solid rgba(214,173,104,.2);background:#0b0b0b}.more-slide.active{display:block;animation:fadeUp .35s ease}.more-slide h3{font:55px "Cormorant Garamond",serif;margin-bottom:18px}.more-slide p{color:#aaa;line-height:1.9}.more-back{color:var(--gold);background:none;border:0;cursor:pointer;letter-spacing:2px;font-size:10px;margin-bottom:25px}.mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:25px}.mini-card{padding:20px;border:1px solid rgba(214,173,104,.15)}.mini-card b{font-family:"Cormorant Garamond",serif;font-size:25px}.mini-card span{display:block;color:var(--gold);font-size:10px;margin-top:8px;letter-spacing:1px}.faq-item{border-bottom:1px solid rgba(214,173,104,.16);padding:20px 0}.faq-item b{color:#eee}.faq-item p{margin-top:8px}.more-cta{display:inline-block;margin-top:25px;padding:13px 22px;border:1px solid var(--gold);color:var(--gold);text-decoration:none;font-size:10px;letter-spacing:2px}@media(max-width:700px){.more-grid{grid-template-columns:1fr}.mini-grid{grid-template-columns:1fr}.more-slide{padding:30px 22px}.more-slide h3{font-size:45px}.more-head h2{font-size:40px}}
+</style>
+<div class="more-panel" id="morePanel">
+<div class="more-head"><div><div class="small">EXPLORE</div><h2>More from SIROHI CLICK</h2></div><button class="more-close" onclick="closeMore()">CLOSE ×</button></div>
+<div class="more-grid" id="moreGrid">
+<div class="more-option" onclick="showMore('packages')"><div class="small">01</div><h3>Packages</h3><p>Simple, flexible pricing options.</p></div>
+<div class="more-option" onclick="showMore('process')"><div class="small">02</div><h3>How It Works</h3><p>From enquiry to final delivery.</p></div>
+<div class="more-option" onclick="showMore('why')"><div class="small">03</div><h3>Why SIROHI CLICK</h3><p>What makes the work different.</p></div>
+<div class="more-option" onclick="showMore('faq')"><div class="small">04</div><h3>FAQ</h3><p>Quick answers before booking.</p></div>
+<div class="more-option" onclick="showMore('instagram')"><div class="small">05</div><h3>Instagram</h3><p>See latest stories and reels.</p></div>
+<div class="more-option" onclick="showMore('booking')"><div class="small">06</div><h3>Booking</h3><p>Start your next project.</p></div>
+</div>
+<div class="more-slide" id="slide-packages"><button class="more-back" onclick="backMore()">← BACK</button><h3>Packages</h3><p>Choose a starting package or ask for a custom quote.</p><div class="mini-grid"><div class="mini-card"><b>Essential</b><span>FROM ₹599+</span></div><div class="mini-card"><b>Signature</b><span>FROM ₹999+</span></div><div class="mini-card"><b>Custom</b><span>CUSTOM QUOTE</span></div></div></div>
+<div class="more-slide" id="slide-process"><button class="more-back" onclick="backMore()">← BACK</button><h3>How It Works</h3><div class="mini-grid"><div class="mini-card"><b>01 Enquiry</b><p>Requirement, date aur location share karo.</p></div><div class="mini-card"><b>02 Plan</b><p>Service aur shoot details final hoti hain.</p></div><div class="mini-card"><b>03 Shoot & Edit</b><p>Creative shoot ke baad clean cinematic edit.</p></div></div></div>
+<div class="more-slide" id="slide-why"><button class="more-back" onclick="backMore()">← BACK</button><h3>Why SIROHI CLICK</h3><div class="mini-grid"><div class="mini-card"><b>Cinematic</b><p>Modern visual feel.</p></div><div class="mini-card"><b>Flexible</b><p>Custom requirements.</p></div><div class="mini-card"><b>Clean Edit</b><p>Polished final output.</p></div></div></div>
+<div class="more-slide" id="slide-faq"><button class="more-back" onclick="backMore()">← BACK</button><h3>FAQ</h3><div class="faq-item"><b>Booking kaise karein?</b><p>WhatsApp par requirement, date aur location bhej dein.</p></div><div class="faq-item"><b>Price fixed hai?</b><p>Starting price se final quote shoot ki requirement par depend karta hai.</p></div><div class="faq-item"><b>Kaunse cities cover karte ho?</b><p>Sirohi, Jaipur, Jodhpur, Pali, Ahmedabad aur All India.</p></div><div class="faq-item"><b>Custom shoot possible hai?</b><p>Haan, custom requirements ke liye enquiry kar sakte ho.</p></div></div>
+<div class="more-slide" id="slide-instagram"><button class="more-back" onclick="backMore()">← BACK</button><h3>Instagram</h3><p>Latest work, reels aur updates ke liye connect karo.</p><a class="more-cta" href="https://www.instagram.com/vaishnavclick/" target="_blank">VAISHNAV CLICK</a> <a class="more-cta" href="https://www.instagram.com/sirohiclick/" target="_blank">SIROHI CLICK</a></div>
+<div class="more-slide" id="slide-booking"><button class="more-back" onclick="backMore()">← BACK</button><h3>Your Moment.<br>Our Frame.</h3><p>Apni requirement WhatsApp par bhejo aur booking start karo.</p><a class="more-cta" href="https://wa.me/917014136083?text=Hi%20SIROHI%20CLICK%2C%20mujhe%20booking%20karni%20hai." target="_blank">START A BOOKING</a></div>
+</div>
+<script>
+function openMore(){document.getElementById('morePanel').classList.add('open');document.body.style.overflow='hidden'}
+function closeMore(){document.getElementById('morePanel').classList.remove('open');document.body.style.overflow=''}
+function showMore(id){document.getElementById('moreGrid').style.display='none';document.querySelectorAll('.more-slide').forEach(x=>x.classList.remove('active'));document.getElementById('slide-'+id).classList.add('active')}
+function backMore(){document.querySelectorAll('.more-slide').forEach(x=>x.classList.remove('active'));document.getElementById('moreGrid').style.display='grid'}
+</script>
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+  const filter=document.getElementById("galleryFilter");
+  if(!filter)return;
+  filter.addEventListener("click",e=>{
+    const btn=e.target.closest("button[data-filter]");
+    if(!btn)return;
+    filter.querySelectorAll("button").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    const mode=btn.dataset.filter;
+    document.querySelectorAll("#gallery .item").forEach(item=>{
+      const isReel=!!item.querySelector("video");
+      const hide=mode==="reel"?!isReel:mode==="photo"?isReel:false;
+      item.classList.toggle("gallery-hidden",hide);
+    });
+  });
+});
+</script></body>
+</html>
